@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Liked-It</title>
+	<link rel="icon" href="images/icons8-love-64.png" type="image/icon type">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+	<!-- //bootstrap -->
+	<link href="css/dashboard.css" rel="stylesheet">
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+	<!--start-smoth-scrolling-->
+	<!-- fonts -->
+	
+	
+		<style>
+                .accordion {
+                top: 220px;
+                background-color: #eee;
+                background-color: rgb(185, 162, 230);
+                cursor: pointer;
+                padding: 20px;
+                border: none;
+                text-align: center;
+                outline: none;
+                font-size: 15px;
+                transition: 0.4s;
+                font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic;
+				font-size: 20px;
+                }
+
+                .active, .accordion:hover {
+                background-color: #ccc;
+                }
+
+                .panel {
+                padding: 0 18px;
+                background-color: white;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                }
+		
+		</style>
+	</head>
+<body>
+	<div class="col-sm-3 col-md-2 sidebar" id = "lineButton" style="visibility: hidden; width: 25px;">
+		<a href ="javascript:void(0)" class="t-img" onclick="openNav()">
+			<img src="images/lines.png" alt="" class="t-menu" id = "lines" style="margin-top: 20px; margin-left: -15px;"/></a>
+	</div>
+    
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+			<a href="./">
+			<img src="images/icons8-angellist-64.png" /></a>
+		</div> 
+			<div id="navbar" class="navbar-collapse collapse">
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</nav>
+	 <div class="col-sm-3 col-md-2 sidebar" id="mySidenav" style="visibility: visible; width:250px; margin-left:0px">
+	
+		<div class="drop-navigation drop-navigation" >
+			<div class="top-navigation">
+				<div class="t-img">
+					<img src="images/lines.png" alt="" />
+				</div>
+			</div>
+			<ul class="nav nav-sidebar">
+				<li class="active">
+					<a href ="javascript:void(0)" class="t-img" onclick="closeNav()">
+						<img src="images/lines.png" alt="" class="t-menu" id = "lines"/>	Menu</a>
+					</li>
+				<li class="active" ><a href="./">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,15.0472l-78.83333,70.9528h21.5v64.5h43v-50.16667h28.66667v50.16667h43v-64.5h21.5z"></path></g></g></svg>
+					Homepage</a>
+				</li>
+				<li class="active" ><a href="./webgaze.html">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,37.84c-44.76472,0 -80.24407,40.74889 -81.73359,42.48265c-1.10768,1.29 -1.10768,3.19141 0,4.48141c1.48952,1.73032 36.96887,42.47594 81.73359,42.47594c3.50192,0 6.94192,-0.2781 10.32,-0.73906v-7.00765c-3.38496,0.516 -6.81808,0.86672 -10.32,0.86672c-35.776,0 -66.38727,-29.3948 -74.44375,-37.84c5.0224,-5.26664 18.81916,-18.6807 37.16812,-28.03063c-2.60752,5.48336 -4.00437,11.51519 -4.00437,17.71063c0,22.76248 18.51752,41.28 41.28,41.28c3.57072,0 7.01416,-0.50063 10.32,-1.35719v-7.08828c0,-0.00688 0.00672,-0.02 0.00672,-0.02688c-3.26112,1.02856 -6.73192,1.59235 -10.32672,1.59235c-18.96816,0 -34.4,-15.43184 -34.4,-34.4c0,-8.38672 3.04849,-16.42465 8.57313,-22.70265c8.09432,-2.93432 16.79343,-4.81735 25.82687,-4.81735c9.03,0 17.73256,1.87959 25.82687,4.81735c5.5212,6.278 8.57313,14.31249 8.57313,22.70265c0,9.37056 -3.77744,17.8708 -9.87656,24.08h8.93594c4.89856,-6.78712 7.82063,-15.08784 7.82063,-24.08c0,-6.19544 -1.40358,-12.22726 -4.0111,-17.71063c18.3524,9.34992 32.14901,22.76399 37.17485,28.03063c-2.7176,2.84488 -8.03885,8.08056 -15.21125,13.76h10.88437c6.9488,-6.16104 11.12824,-10.95161 11.61672,-11.52265c1.10424,-1.29 1.10424,-3.19141 0,-4.48141c-1.48952,-1.73032 -36.96888,-42.47594 -81.7336,-42.47594zM86,55.04c-9.49784,0 -17.2,7.70216 -17.2,17.2c0,9.49784 7.70216,17.2 17.2,17.2c9.49784,0 17.2,-7.70216 17.2,-17.2c0,-9.49784 -7.70216,-17.2 -17.2,-17.2zM106.64,103.2c-1.89978,0.00019 -3.43981,1.54022 -3.44,3.44v61.92c0.00019,1.89978 1.54022,3.43981 3.44,3.44h61.92c1.89978,-0.00019 3.43981,-1.54022 3.44,-3.44v-61.92c-0.00019,-1.89978 -1.54022,-3.43981 -3.44,-3.44zM110.08,110.08h55.04v55.04h-55.04zM152.39469,121.77735l-18.57734,21.66797l-11.35469,-8.6l-4.12531,5.50937l16.16531,12.38266l23.05203,-26.49203z"></path></g></g></svg>
+					Calibration</a>
+				</li>
+				<li class="active" ><a href="./trendsInLikedIt.html">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M28.66667,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h114.66667c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM28.66667,35.83333h114.66667v100.33333h-114.66667zM64.5,57.33333v57.33333l50.16667,-28.66667z"></path></g></g></svg>LikedIt Trends</a>
+				</li>
+				<li class="active" ><a href="./analyze.html"  >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M156.00885,1.2099c-8.19688,0 -14.78125,6.58437 -14.78125,14.78125c0,3.49375 1.2099,6.71927 3.22552,9.2724l-36.01355,50.79218c-1.6125,-0.5375 -3.22395,-0.80572 -4.97083,-0.80572c-3.35937,0 -6.3151,1.07395 -8.86822,2.9552l-17.73907,-13.57135c0.67188,-1.74688 1.07605,-3.49322 1.07605,-5.50885c0,-8.19687 -6.58437,-14.78125 -14.78125,-14.78125c-8.19687,0 -14.78125,6.58438 -14.78125,14.78125c0,3.225 1.07395,6.31562 2.9552,8.73438l-28.3526,36.68542c-1.74687,-0.67187 -3.6276,-1.07605 -5.50885,-1.07605c-8.19687,0 -14.78125,6.58438 -14.78125,14.78125c0,8.19687 6.58438,14.78125 14.78125,14.78125c8.19688,0 14.78125,-6.58438 14.78125,-14.78125c0,-3.225 -1.07395,-6.31562 -2.9552,-8.73437l28.3526,-36.68542c1.74688,0.67188 3.49322,1.07605 5.50885,1.07605c3.35938,0 6.3151,-1.07395 8.86822,-2.9552l17.73907,13.57135c-0.67187,1.74687 -1.07605,3.6276 -1.07605,5.50885c0,8.19687 6.58438,14.78125 14.78125,14.78125c8.19687,0 14.78125,-6.58438 14.78125,-14.78125c0,-3.49375 -1.2099,-6.71928 -3.22553,-9.2724l36.01355,-50.79218c1.47813,0.5375 3.22395,0.80573 4.97083,0.80573c8.19688,0 14.78125,-6.58437 14.78125,-14.78125c0,-8.19688 -6.58437,-14.78125 -14.78125,-14.78125zM155.875,9.40625c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM63.15625,52.40625c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM103.46875,83.3125c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM17.46875,111.53125c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM5.18079,162.51502c-0.98892,0.04409 -1.92167,0.44931 -2.62714,1.15478c-0.13437,0.13438 -0.40365,0.40312 -0.53802,0.67188c-0.13438,0.26875 -0.2698,0.40312 -0.40417,0.67188c-0.13438,0.26875 -0.13333,0.53698 -0.2677,0.80573c0,0.26875 -0.13385,0.53698 -0.13385,0.80573c0,1.075 0.40365,2.14948 1.2099,2.82135c0.80625,0.80625 1.74635,1.2099 2.82135,1.2099c0.26875,0 0.53698,0.00052 0.80573,-0.13385c0.26875,0 0.53698,-0.13595 0.80573,-0.27032c0.26875,-0.13438 0.5375,-0.26718 0.67188,-0.40155c0.26875,-0.13438 0.40365,-0.26927 0.53802,-0.53802l0.53802,-0.53802c0.13438,-0.26875 0.26718,-0.40312 0.40155,-0.67187c0.13437,-0.26875 0.13595,-0.53698 0.27032,-0.80573c0,-0.26875 0.13385,-0.53698 0.13385,-0.80573c0,-1.075 -0.40365,-2.14948 -1.2099,-2.82135c-0.13438,-0.13438 -0.40365,-0.2698 -0.53802,-0.40417c-0.26875,-0.13438 -0.40313,-0.2698 -0.67187,-0.40417c-0.26875,-0.13438 -0.53698,-0.13333 -0.80573,-0.2677c-0.33594,-0.06719 -0.6703,-0.09343 -0.99994,-0.07873zM32.25,162.59375c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125c0,2.28438 1.74687,4.03125 4.03125,4.03125h134.375c2.28438,0 4.03125,-1.74687 4.03125,-4.03125c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125z"></path></g></g></svg>
+					Analyses</a>
+				</li>
+				<li class="active" ><a href="./howtouse.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M130.72,3.44c-14.48562,0 -25.03406,5.34813 -31.7125,12.5775c-6.67844,7.22938 -9.5675,16.13844 -9.5675,23.5425c0,11.34125 6.04688,20.5325 14.0825,26.66c8.03563,6.1275 18.04656,9.46 27.1975,9.46c9.1375,0 19.16188,-3.25187 27.1975,-9.3525c8.03563,-6.10062 14.0825,-15.31875 14.0825,-26.7675c0,-18.22125 -16.28625,-36.12 -41.28,-36.12zM130.72,10.32c21.74188,0 34.4,15.13063 34.4,29.24c0,9.08375 -4.55531,16.17875 -11.2875,21.285c-6.73219,5.10625 -15.65469,7.955 -23.1125,7.955c-7.43094,0 -16.25937,-2.91594 -23.005,-8.0625c-6.74562,-5.14656 -11.395,-12.22812 -11.395,-21.1775c0,-5.54969 2.32469,-13.04781 7.74,-18.92c5.41531,-5.87219 13.82719,-10.32 26.66,-10.32zM58.1575,48.16c-13.66594,0.25531 -22.53469,5.87219 -26.3375,14.5125c-3.61469,8.21031 -2.88906,18.36906 -0.3225,28.9175c-1.35719,1.73344 -2.43219,3.88344 -2.0425,7.095c0.44344,3.61469 1.42438,6.28875 2.9025,8.17c0.72563,0.92719 1.67969,1.00781 2.58,1.505c0.5375,3.01 1.42438,5.99313 2.6875,8.4925c0.73906,1.46469 1.53188,2.75469 2.365,3.87c0.3225,0.43 0.84656,0.69875 1.1825,1.075c0.02688,3.41313 0.06719,6.31563 -0.215,9.89c-0.87344,2.05594 -2.94281,3.74906 -6.45,5.4825c-3.62812,1.80063 -8.46562,3.50719 -13.33,5.59c-4.86437,2.08281 -9.84969,4.55531 -13.8675,8.6c-4.01781,4.04469 -6.86656,9.68844 -7.31,16.985l-0.215,3.655h117.39l-0.215,-3.655c-0.44344,-7.28312 -3.30562,-12.94031 -7.31,-16.985c-4.00437,-4.04469 -9.01656,-6.51719 -13.8675,-8.6c-4.85094,-2.08281 -9.60781,-3.78937 -13.2225,-5.59c-3.48031,-1.73344 -5.46906,-3.42656 -6.3425,-5.4825c-0.28219,-3.57437 -0.34937,-6.47687 -0.3225,-9.89c0.33594,-0.38969 0.86,-0.645 1.1825,-1.075c0.81969,-1.12875 1.63938,-2.40531 2.365,-3.87c1.22281,-2.49937 2.05594,-5.49594 2.58,-8.4925c0.90031,-0.49719 1.85438,-0.57781 2.58,-1.505c1.47813,-1.88125 2.45906,-4.55531 2.9025,-8.17c0.37625,-3.14437 -0.63156,-5.2675 -1.935,-6.9875c1.42438,-4.63594 3.17125,-11.95937 2.58,-19.565c-0.33594,-4.20594 -1.3975,-8.385 -3.9775,-11.9325c-2.44562,-3.37281 -6.46344,-5.87219 -11.5025,-6.7725c-3.29219,-3.61469 -8.46562,-5.2675 -14.5125,-5.2675zM58.1575,55.04c0.04031,0 0.06719,0 0.1075,0c5.72438,0.02688 9.29875,1.74688 10.2125,3.3325l0.86,1.505l1.72,0.215c3.91031,0.5375 5.97969,1.96188 7.525,4.085c1.54531,2.12313 2.41875,5.21375 2.6875,8.6c0.5375,6.7725 -1.45125,14.78125 -2.6875,18.49l-0.86,2.58l2.365,1.505c-0.33594,-0.20156 0.91375,0.38969 0.645,2.58c-0.33594,2.75469 -1.075,4.07156 -1.505,4.6225c-0.43,0.55094 -0.55094,0.44344 -0.43,0.43l-2.9025,0.215l-0.215,2.9025c-0.25531,2.39188 -1.33031,5.29438 -2.4725,7.6325c-0.57781,1.16906 -1.10187,2.20375 -1.6125,2.9025c-0.37625,0.52406 -0.7525,0.91375 -0.7525,0.9675l-1.8275,0.86v2.0425c0,4.15219 -0.12094,7.60563 0.3225,12.47v0.43l0.215,0.43c1.73344,4.6225 5.73781,7.44438 9.9975,9.5675c4.25969,2.12313 9.03,3.655 13.545,5.59c4.515,1.935 8.61344,4.17906 11.61,7.2025c2.24406,2.27094 3.66844,5.29438 4.515,8.9225h-101.48c0.84656,-3.62812 2.2575,-6.65156 4.515,-8.9225c3.01,-3.02344 7.18906,-5.2675 11.7175,-7.2025c4.52844,-1.935 9.27188,-3.46687 13.545,-5.59c4.27313,-2.12312 8.26406,-4.93156 9.9975,-9.5675l0.215,-0.43v-0.43c0.44344,-4.86437 0.3225,-8.31781 0.3225,-12.47v-2.0425l-1.72,-0.9675c0.01344,0.01344 0,0.05375 -0.1075,0c-0.13437,-0.12094 -0.43,-0.41656 -0.7525,-0.86c-0.52406,-0.69875 -1.12875,-1.73344 -1.72,-2.9025c-1.1825,-2.33812 -2.21719,-5.2675 -2.4725,-7.6325l-0.215,-2.9025l-2.9025,-0.215c0.12094,0.01344 0,0.12094 -0.43,-0.43c-0.43,-0.55094 -1.16906,-1.86781 -1.505,-4.6225c-0.26875,-2.19031 0.9675,-2.78156 0.645,-2.58l2.15,-1.3975l-0.645,-2.4725c-2.71437,-10.37375 -3.07719,-19.76656 -0.3225,-26.015c2.74125,-6.22156 8.19688,-10.18562 20.1025,-10.4275zM116.96,79.12c-7.24281,0 -13.76,5.06594 -13.76,12.04c0,6.97406 6.51719,12.04 13.76,12.04c7.24281,0 13.76,-5.06594 13.76,-12.04c0,-6.97406 -6.51719,-12.04 -13.76,-12.04zM116.96,86c4.15219,0 6.88,2.64719 6.88,5.16c0,2.51281 -2.72781,5.16 -6.88,5.16c-4.15219,0 -6.88,-2.64719 -6.88,-5.16c0,-2.51281 2.72781,-5.16 6.88,-5.16zM99.76,103.2c-2.59344,0 -4.95844,0.71219 -6.88,2.15c-1.92156,1.43781 -3.44,3.78938 -3.44,6.45c0,2.66063 1.51844,5.01219 3.44,6.45c1.92156,1.43781 4.28656,2.15 6.88,2.15c2.59344,0 4.95844,-0.71219 6.88,-2.15c1.92156,-1.43781 3.44,-3.78937 3.44,-6.45c0,-2.66062 -1.51844,-5.01219 -3.44,-6.45c-1.92156,-1.43781 -4.28656,-2.15 -6.88,-2.15zM99.76,110.08c1.20938,0 2.21719,0.43 2.795,0.86c0.57781,0.43 0.645,0.67188 0.645,0.86c0,0.18813 -0.06719,0.43 -0.645,0.86c-0.57781,0.43 -1.58562,0.86 -2.795,0.86c-1.20937,0 -2.21719,-0.43 -2.795,-0.86c-0.57781,-0.43 -0.645,-0.67187 -0.645,-0.86c0,-0.18812 0.06719,-0.43 0.645,-0.86c0.57781,-0.43 1.58563,-0.86 2.795,-0.86z"></path></g></g></svg>
+					How to use</a>
+				</li>
+				
+				<li class="active"><a href="./about.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,3.44c-47.39406,0 -86,33.98344 -86,76.325c0,20.80125 9.54063,39.47938 24.8325,53.32c-2.31125,7.13531 -7.47125,12.76563 -12.685,17.0925c-2.80844,2.32469 -5.49594,4.31344 -7.6325,6.235c-1.06156,0.95406 -2.02906,1.92156 -2.795,3.1175c-0.76594,1.19594 -1.45125,2.9025 -0.9675,4.73l0.43,1.3975l1.1825,0.7525c4.43438,2.55313 9.95719,2.99656 15.91,2.58c5.95281,-0.41656 12.44313,-1.78719 18.8125,-3.5475c12.3625,-3.41312 23.9725,-8.2775 30.1,-10.965c6.04688,1.26313 12.12063,2.0425 18.49,2.0425c47.39406,0 86,-33.98344 86,-76.325c0,-42.32812 -38.27,-76.755 -85.6775,-76.755zM86,10.32c44.10188,0 78.7975,31.69906 78.7975,69.875c0,38.14906 -35.00469,69.445 -79.12,69.445c-6.28875,0 -12.21469,-0.61812 -18.1675,-1.935l-1.1825,-0.3225l-0.9675,0.5375c-5.75125,2.53969 -17.91219,7.49813 -30.1,10.8575c-6.10062,1.67969 -12.17437,2.96969 -17.415,3.3325c-3.50719,0.24188 -5.67062,-0.59125 -8.0625,-1.1825c1.70656,-1.46469 4.04469,-3.21156 6.7725,-5.4825c5.99313,-4.97187 13.18219,-11.89219 15.695,-22.145l0.5375,-2.15l-1.72,-1.29c-15.1575,-12.84625 -24.1875,-30.53 -24.1875,-50.095c0,-38.14906 35.00469,-69.445 79.12,-69.445zM81.915,44.075c-1.03469,0 -1.3975,0.60469 -1.3975,1.29v9.03c0,1.03469 0.71219,1.29 1.3975,1.29h8.17c1.03469,0 1.3975,-0.60469 1.3975,-1.29v-9.03c0,-1.03469 -0.71219,-1.29 -1.3975,-1.29zM82.2375,69.1225c-1.03469,0 -1.3975,0.71219 -1.3975,1.3975v46.1175c0,1.03469 0.71219,1.3975 1.3975,1.3975v0.3225h7.8475c1.03469,0 1.3975,-0.71219 1.3975,-1.3975v-46.44c0,-1.03469 -0.71219,-1.3975 -1.3975,-1.3975z"></path></g></g></svg>
+					About LikedIt</a>
+				</li>
+				<li class="active" ><a href="./settings.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M70.63086,10.75l-2.60352,13.85743c-9.99414,2.93945 -18.89648,8.14648 -26.20312,15.11719l-13.31152,-4.66114l-15.36915,26.62304l10.62403,9.11231c-1.21778,4.91308 -2.26758,9.91016 -2.26758,15.20117c0,5.29102 1.0498,10.28808 2.26758,15.20118l-10.62403,9.1123l15.36915,26.62304l13.26953,-4.70312c7.34864,7.05469 16.25098,12.21973 26.24511,15.20118l2.60352,13.81543h30.73828l2.60351,-13.81543c9.99415,-2.98145 18.89649,-8.18848 26.20313,-15.20118l13.26953,4.70313l15.41114,-26.62304l-10.66602,-9.1123c1.21778,-4.91309 2.30957,-9.91016 2.30957,-15.20118c0,-5.29101 -1.0498,-10.28808 -2.26757,-15.20117l10.62402,-9.11231l-15.36915,-26.62304l-13.26953,4.66114c-7.34862,-7.0127 -16.25097,-12.17774 -26.24511,-15.11719l-2.60351,-13.85743zM79.53321,21.5h12.93359l2.0996,11.3379l3.44336,0.83984c10.66601,2.43554 20.07226,8.0205 27.29492,15.74706l2.39355,2.56153l10.91797,-3.82129l6.4668,11.16992l-8.73437,7.5166l1.0498,3.35938c1.51172,4.95508 2.35156,10.28808 2.35156,15.78906c0,5.50098 -0.83984,10.79199 -2.35156,15.78906l-1.0498,3.35938l8.73438,7.5166l-6.4668,11.16992l-10.91797,-3.86328l-2.39355,2.60352c-7.22266,7.72656 -16.62891,13.31152 -27.29492,15.78906l-3.44336,0.75585l-2.0996,11.37989h-12.93359l-2.09961,-11.37989l-3.44335,-0.75585c-10.66602,-2.47754 -20.07227,-8.0625 -27.29493,-15.78906l-2.43554,-2.60352l-10.91797,3.86328l-6.42481,-11.16992l8.73437,-7.5166l-1.0498,-3.35937c-1.51172,-4.95507 -2.35156,-10.28808 -2.35156,-15.78906c0,-5.50098 0.83984,-10.83398 2.35156,-15.78906l1.0498,-3.35937l-8.73437,-7.5166l6.42481,-11.16992l10.95996,3.82129l2.39355,-2.56153c7.22266,-7.72656 16.62891,-13.31152 27.29493,-15.74706l3.44335,-0.83984zM86,53.75c-17.7627,0 -32.25,14.4873 -32.25,32.25c0,17.7627 14.4873,32.25 32.25,32.25c17.7627,0 32.25,-14.4873 32.25,-32.25c0,-17.7627 -14.4873,-32.25 -32.25,-32.25zM86,64.5c11.92578,0 21.5,9.57422 21.5,21.5c0,11.92578 -9.57422,21.5 -21.5,21.5c-11.92578,0 -21.5,-9.57422 -21.5,-21.5c0,-11.92578 9.57422,-21.5 21.5,-21.5z"></path></g></g></svg>
+					Settings</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div style="margin-top: 50px; margin-left: 300px;" id="questions">
+   
+        <button class="accordion">How do I sign up?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>If you can have Google Account, you can sign up easily. If you don't have, visit to create Google Account.</p>
+		  <p><a href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Ftakeout.google.com%2Fsettings%2Ftakeout&dsh=S1577964509%3A1590849544015868&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp">Create Account</a></p>
+		</div>
+        <button class="accordion">How can I see my analyses?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>You can select 'Analyses' page from Menu. If you can't see, don't forget to sign up. Also, it can be a few minutes to load your fresh analysis.</p>
+        </div>	
+		<button class="accordion">Why I can't see Heatmap?</button>
+		<div class="panel" style="text-align:start;
+		font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+		font-size: 20px;">
+		<p>Firstly, you have to do calibration to see your Heatmap.</p>
+		</div>	
+        <button class="accordion">How can share my analyzes with my friends?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>Your analyses are private. They can't be accessible, globally. On the other hand, if you want to share your feedback with your friend, you can send a link of your feedback to your friends.</p>
+        </div>
+
+        <button class="accordion">Is my personal data secure?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>Yes!! The system holds data about user's rates for liking, types of emotions, and gaze data of the videos. However, the program does not hold any video or any photo of the user so our system does not violate the privacy of users. Personal data about the results of the analysis of the videos of the user is not shared with third parties.</p>
+        </div>
+        <button class="accordion">Does cloud option represent my personal data will be shared, globally?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>No!! After feedback generated, we delete all the data about you except feedback rates, automatically.</p>
+        </div>	
+        <button class="accordion">Is desktop option secure with 100%?</button>
+        <div class="panel" style="text-align:start;
+        font-family: Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+        font-size: 20px;">
+          <p>Yes!! If you choose desktop option, your data will be processed on your computer.</p>
+        </div>	
+		
+	</div>
+	
+	<canvas id="canvas" onclick="clickFunction(event)"></canvas>
+
+	</body>
+<script>
+	
+    function openNav() {
+      var which = document.getElementById("lineButton");
+      console.log("close: " + which.style.visibility);
+      which.style.visibility = "hidden";
+      document.getElementById("mySidenav").style.marginLeft = "0px";
+	  document.getElementById("mySidenav").style.width = "250px";
+	  document.getElementById("questions").style.marginLeft = "300px";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.marginLeft = "-3000px";
+		document.getElementById("lineButton").style.width = "25px";
+		document.getElementById("questions").style.marginLeft = "70px";
+        var which = document.getElementById("lineButton");
+        which.style.visibility = "visible";			
+    }
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
+    }
+
+</script>
+</html>

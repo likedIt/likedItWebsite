@@ -1,0 +1,648 @@
+<!DOCTYPE HTML>
+
+<head>
+	<title>Liked-It</title>
+	<link rel="icon" href="images/icons8-love-64.png" type="image/icon type">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	
+
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+
+	<link href="css/dashboard.css" rel="stylesheet">
+
+	<link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="google-site-verification" content="Flq6nMf9t5XZIa5d5YtgN1h9SCBw-LHLH6hA2zLkPcQ" />
+</head>
+<style>
+    .buttono {
+      background-color: rgb(73,0,208);
+      border: none;
+      color: white;
+      padding: 15px 28px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+      position: relative;
+      left: 71%;
+      border-radius: 20px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="./">
+                <img src="images/icons8-angellist-64.png" /></a>
+            </div> 
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <div class="signin">
+
+                    <body>
+                        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+                        <script src="./DB.js" charset="utf-8"></script>
+                    </body>
+
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </nav>
+     
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main" style="margin-left: 10%;">
+                <div style = " float:left; width: 80%;">
+                    <div id="container" style = "z-index: 5; height: 380px; position: relative;">
+                        <div id = hande class = heatmap><div id = player></div></div>
+                    </div>
+                    <div class="wrapper" id="main2" style="margin-left: -80px; z-index: 0; position: relative;">
+                        <div id="chart" style="visibility: visible; display: unset; "></div>
+                        <div id="chart2" style="visibility: hidden; display: none;"></div>
+                        
+                    </div>
+                </div>
+
+                <div  style = " float:left; width: 20%;">
+                    <h3 id ="titleh1", style = "font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;"></h3>
+                    <br>
+                    <br>
+                    <button class="buttono" onclick="like()" style="margin-left: -200px !important; ">Like Analysis</button>
+                    <button class="buttono" id="emo" onclick="emotion()" style="margin-left: 10px !important;">Emotion Analysis</button></br>
+                </div>
+               <!---- <button class="buttono" style = "float:left; width: 15%; margin-top: 10px;" onclick="window.player.playVideo();" >Resume</button>
+                <button class="buttono" style = "float:left; width: 15%; margin-top: 10px;" onclick="window.player.pauseVideo();" >Pause</button> -->
+    </div>
+    
+    <div class="col-sm-3 col-md-2 sidebar" id = "lineButton" style="visibility: visible; width: 25px;">
+		<a href ="javascript:void(0)" class="t-img" onclick="openNav()">
+			<img src="images/lines.png" alt="" class="t-menu" id = "lines" style="margin-top: 20px; margin-left: -15px;"/></a>
+	</div>
+	
+	 <div class="col-sm-3 col-md-2 sidebar" id="mySidenav" style="visibility: visible; width:250px; margin-left:-3000px">
+	
+		<div class="drop-navigation drop-navigation" >
+			<div class="top-navigation">
+				<div class="t-img">
+					<img src="images/lines.png" alt="" />
+				</div>
+			</div>
+			<ul class="nav nav-sidebar">
+				<li class="active">
+					<a href ="javascript:void(0)" class="t-img" onclick="closeNav()">
+						<img src="images/lines.png" alt="" class="t-menu" id = "lines"/>	Menu</a>
+					</li>
+				<li class="active" ><a href="./">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,15.0472l-78.83333,70.9528h21.5v64.5h43v-50.16667h28.66667v50.16667h43v-64.5h21.5z"></path></g></g></svg>
+					Homepage</a>
+				</li>
+				<li class="active" ><a href="./webgaze.html">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,37.84c-44.76472,0 -80.24407,40.74889 -81.73359,42.48265c-1.10768,1.29 -1.10768,3.19141 0,4.48141c1.48952,1.73032 36.96887,42.47594 81.73359,42.47594c3.50192,0 6.94192,-0.2781 10.32,-0.73906v-7.00765c-3.38496,0.516 -6.81808,0.86672 -10.32,0.86672c-35.776,0 -66.38727,-29.3948 -74.44375,-37.84c5.0224,-5.26664 18.81916,-18.6807 37.16812,-28.03063c-2.60752,5.48336 -4.00437,11.51519 -4.00437,17.71063c0,22.76248 18.51752,41.28 41.28,41.28c3.57072,0 7.01416,-0.50063 10.32,-1.35719v-7.08828c0,-0.00688 0.00672,-0.02 0.00672,-0.02688c-3.26112,1.02856 -6.73192,1.59235 -10.32672,1.59235c-18.96816,0 -34.4,-15.43184 -34.4,-34.4c0,-8.38672 3.04849,-16.42465 8.57313,-22.70265c8.09432,-2.93432 16.79343,-4.81735 25.82687,-4.81735c9.03,0 17.73256,1.87959 25.82687,4.81735c5.5212,6.278 8.57313,14.31249 8.57313,22.70265c0,9.37056 -3.77744,17.8708 -9.87656,24.08h8.93594c4.89856,-6.78712 7.82063,-15.08784 7.82063,-24.08c0,-6.19544 -1.40358,-12.22726 -4.0111,-17.71063c18.3524,9.34992 32.14901,22.76399 37.17485,28.03063c-2.7176,2.84488 -8.03885,8.08056 -15.21125,13.76h10.88437c6.9488,-6.16104 11.12824,-10.95161 11.61672,-11.52265c1.10424,-1.29 1.10424,-3.19141 0,-4.48141c-1.48952,-1.73032 -36.96888,-42.47594 -81.7336,-42.47594zM86,55.04c-9.49784,0 -17.2,7.70216 -17.2,17.2c0,9.49784 7.70216,17.2 17.2,17.2c9.49784,0 17.2,-7.70216 17.2,-17.2c0,-9.49784 -7.70216,-17.2 -17.2,-17.2zM106.64,103.2c-1.89978,0.00019 -3.43981,1.54022 -3.44,3.44v61.92c0.00019,1.89978 1.54022,3.43981 3.44,3.44h61.92c1.89978,-0.00019 3.43981,-1.54022 3.44,-3.44v-61.92c-0.00019,-1.89978 -1.54022,-3.43981 -3.44,-3.44zM110.08,110.08h55.04v55.04h-55.04zM152.39469,121.77735l-18.57734,21.66797l-11.35469,-8.6l-4.12531,5.50937l16.16531,12.38266l23.05203,-26.49203z"></path></g></g></svg>
+					Calibration</a>
+				</li>
+				<li class="active" ><a href="./trendsInLikedIt.html">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M28.66667,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h114.66667c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM28.66667,35.83333h114.66667v100.33333h-114.66667zM64.5,57.33333v57.33333l50.16667,-28.66667z"></path></g></g></svg>LikedIt Trends</a>
+                </li>
+                <li class="active"><a href="./about.html" >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="24" height="24"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,3.44c-47.39406,0 -86,33.98344 -86,76.325c0,20.80125 9.54063,39.47938 24.8325,53.32c-2.31125,7.13531 -7.47125,12.76563 -12.685,17.0925c-2.80844,2.32469 -5.49594,4.31344 -7.6325,6.235c-1.06156,0.95406 -2.02906,1.92156 -2.795,3.1175c-0.76594,1.19594 -1.45125,2.9025 -0.9675,4.73l0.43,1.3975l1.1825,0.7525c4.43438,2.55313 9.95719,2.99656 15.91,2.58c5.95281,-0.41656 12.44313,-1.78719 18.8125,-3.5475c12.3625,-3.41312 23.9725,-8.2775 30.1,-10.965c6.04688,1.26313 12.12063,2.0425 18.49,2.0425c47.39406,0 86,-33.98344 86,-76.325c0,-42.32812 -38.27,-76.755 -85.6775,-76.755zM86,10.32c44.10188,0 78.7975,31.69906 78.7975,69.875c0,38.14906 -35.00469,69.445 -79.12,69.445c-6.28875,0 -12.21469,-0.61812 -18.1675,-1.935l-1.1825,-0.3225l-0.9675,0.5375c-5.75125,2.53969 -17.91219,7.49813 -30.1,10.8575c-6.10062,1.67969 -12.17437,2.96969 -17.415,3.3325c-3.50719,0.24188 -5.67062,-0.59125 -8.0625,-1.1825c1.70656,-1.46469 4.04469,-3.21156 6.7725,-5.4825c5.99313,-4.97187 13.18219,-11.89219 15.695,-22.145l0.5375,-2.15l-1.72,-1.29c-15.1575,-12.84625 -24.1875,-30.53 -24.1875,-50.095c0,-38.14906 35.00469,-69.445 79.12,-69.445zM81.915,44.075c-1.03469,0 -1.3975,0.60469 -1.3975,1.29v9.03c0,1.03469 0.71219,1.29 1.3975,1.29h8.17c1.03469,0 1.3975,-0.60469 1.3975,-1.29v-9.03c0,-1.03469 -0.71219,-1.29 -1.3975,-1.29zM82.2375,69.1225c-1.03469,0 -1.3975,0.71219 -1.3975,1.3975v46.1175c0,1.03469 0.71219,1.3975 1.3975,1.3975v0.3225h7.8475c1.03469,0 1.3975,-0.71219 1.3975,-1.3975v-46.44c0,-1.03469 -0.71219,-1.3975 -1.3975,-1.3975z"></path></g></g></svg>
+                About LikedIt</a>
+            </li>
+				<li class="active" ><a href="./analyze.html"  >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M156.00885,1.2099c-8.19688,0 -14.78125,6.58437 -14.78125,14.78125c0,3.49375 1.2099,6.71927 3.22552,9.2724l-36.01355,50.79218c-1.6125,-0.5375 -3.22395,-0.80572 -4.97083,-0.80572c-3.35937,0 -6.3151,1.07395 -8.86822,2.9552l-17.73907,-13.57135c0.67188,-1.74688 1.07605,-3.49322 1.07605,-5.50885c0,-8.19687 -6.58437,-14.78125 -14.78125,-14.78125c-8.19687,0 -14.78125,6.58438 -14.78125,14.78125c0,3.225 1.07395,6.31562 2.9552,8.73438l-28.3526,36.68542c-1.74687,-0.67187 -3.6276,-1.07605 -5.50885,-1.07605c-8.19687,0 -14.78125,6.58438 -14.78125,14.78125c0,8.19687 6.58438,14.78125 14.78125,14.78125c8.19688,0 14.78125,-6.58438 14.78125,-14.78125c0,-3.225 -1.07395,-6.31562 -2.9552,-8.73437l28.3526,-36.68542c1.74688,0.67188 3.49322,1.07605 5.50885,1.07605c3.35938,0 6.3151,-1.07395 8.86822,-2.9552l17.73907,13.57135c-0.67187,1.74687 -1.07605,3.6276 -1.07605,5.50885c0,8.19687 6.58438,14.78125 14.78125,14.78125c8.19687,0 14.78125,-6.58438 14.78125,-14.78125c0,-3.49375 -1.2099,-6.71928 -3.22553,-9.2724l36.01355,-50.79218c1.47813,0.5375 3.22395,0.80573 4.97083,0.80573c8.19688,0 14.78125,-6.58437 14.78125,-14.78125c0,-8.19688 -6.58437,-14.78125 -14.78125,-14.78125zM155.875,9.40625c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM63.15625,52.40625c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM103.46875,83.3125c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM17.46875,111.53125c3.7625,0 6.71875,2.95625 6.71875,6.71875c0,3.7625 -2.95625,6.71875 -6.71875,6.71875c-3.7625,0 -6.71875,-2.95625 -6.71875,-6.71875c0,-3.7625 2.95625,-6.71875 6.71875,-6.71875zM5.18079,162.51502c-0.98892,0.04409 -1.92167,0.44931 -2.62714,1.15478c-0.13437,0.13438 -0.40365,0.40312 -0.53802,0.67188c-0.13438,0.26875 -0.2698,0.40312 -0.40417,0.67188c-0.13438,0.26875 -0.13333,0.53698 -0.2677,0.80573c0,0.26875 -0.13385,0.53698 -0.13385,0.80573c0,1.075 0.40365,2.14948 1.2099,2.82135c0.80625,0.80625 1.74635,1.2099 2.82135,1.2099c0.26875,0 0.53698,0.00052 0.80573,-0.13385c0.26875,0 0.53698,-0.13595 0.80573,-0.27032c0.26875,-0.13438 0.5375,-0.26718 0.67188,-0.40155c0.26875,-0.13438 0.40365,-0.26927 0.53802,-0.53802l0.53802,-0.53802c0.13438,-0.26875 0.26718,-0.40312 0.40155,-0.67187c0.13437,-0.26875 0.13595,-0.53698 0.27032,-0.80573c0,-0.26875 0.13385,-0.53698 0.13385,-0.80573c0,-1.075 -0.40365,-2.14948 -1.2099,-2.82135c-0.13438,-0.13438 -0.40365,-0.2698 -0.53802,-0.40417c-0.26875,-0.13438 -0.40313,-0.2698 -0.67187,-0.40417c-0.26875,-0.13438 -0.53698,-0.13333 -0.80573,-0.2677c-0.33594,-0.06719 -0.6703,-0.09343 -0.99994,-0.07873zM32.25,162.59375c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125c0,2.28438 1.74687,4.03125 4.03125,4.03125h134.375c2.28438,0 4.03125,-1.74687 4.03125,-4.03125c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125z"></path></g></g></svg>
+					Analyses</a>
+				</li>
+				<li class="active" ><a href="./howtouse.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M130.72,3.44c-14.48562,0 -25.03406,5.34813 -31.7125,12.5775c-6.67844,7.22938 -9.5675,16.13844 -9.5675,23.5425c0,11.34125 6.04688,20.5325 14.0825,26.66c8.03563,6.1275 18.04656,9.46 27.1975,9.46c9.1375,0 19.16188,-3.25187 27.1975,-9.3525c8.03563,-6.10062 14.0825,-15.31875 14.0825,-26.7675c0,-18.22125 -16.28625,-36.12 -41.28,-36.12zM130.72,10.32c21.74188,0 34.4,15.13063 34.4,29.24c0,9.08375 -4.55531,16.17875 -11.2875,21.285c-6.73219,5.10625 -15.65469,7.955 -23.1125,7.955c-7.43094,0 -16.25937,-2.91594 -23.005,-8.0625c-6.74562,-5.14656 -11.395,-12.22812 -11.395,-21.1775c0,-5.54969 2.32469,-13.04781 7.74,-18.92c5.41531,-5.87219 13.82719,-10.32 26.66,-10.32zM58.1575,48.16c-13.66594,0.25531 -22.53469,5.87219 -26.3375,14.5125c-3.61469,8.21031 -2.88906,18.36906 -0.3225,28.9175c-1.35719,1.73344 -2.43219,3.88344 -2.0425,7.095c0.44344,3.61469 1.42438,6.28875 2.9025,8.17c0.72563,0.92719 1.67969,1.00781 2.58,1.505c0.5375,3.01 1.42438,5.99313 2.6875,8.4925c0.73906,1.46469 1.53188,2.75469 2.365,3.87c0.3225,0.43 0.84656,0.69875 1.1825,1.075c0.02688,3.41313 0.06719,6.31563 -0.215,9.89c-0.87344,2.05594 -2.94281,3.74906 -6.45,5.4825c-3.62812,1.80063 -8.46562,3.50719 -13.33,5.59c-4.86437,2.08281 -9.84969,4.55531 -13.8675,8.6c-4.01781,4.04469 -6.86656,9.68844 -7.31,16.985l-0.215,3.655h117.39l-0.215,-3.655c-0.44344,-7.28312 -3.30562,-12.94031 -7.31,-16.985c-4.00437,-4.04469 -9.01656,-6.51719 -13.8675,-8.6c-4.85094,-2.08281 -9.60781,-3.78937 -13.2225,-5.59c-3.48031,-1.73344 -5.46906,-3.42656 -6.3425,-5.4825c-0.28219,-3.57437 -0.34937,-6.47687 -0.3225,-9.89c0.33594,-0.38969 0.86,-0.645 1.1825,-1.075c0.81969,-1.12875 1.63938,-2.40531 2.365,-3.87c1.22281,-2.49937 2.05594,-5.49594 2.58,-8.4925c0.90031,-0.49719 1.85438,-0.57781 2.58,-1.505c1.47813,-1.88125 2.45906,-4.55531 2.9025,-8.17c0.37625,-3.14437 -0.63156,-5.2675 -1.935,-6.9875c1.42438,-4.63594 3.17125,-11.95937 2.58,-19.565c-0.33594,-4.20594 -1.3975,-8.385 -3.9775,-11.9325c-2.44562,-3.37281 -6.46344,-5.87219 -11.5025,-6.7725c-3.29219,-3.61469 -8.46562,-5.2675 -14.5125,-5.2675zM58.1575,55.04c0.04031,0 0.06719,0 0.1075,0c5.72438,0.02688 9.29875,1.74688 10.2125,3.3325l0.86,1.505l1.72,0.215c3.91031,0.5375 5.97969,1.96188 7.525,4.085c1.54531,2.12313 2.41875,5.21375 2.6875,8.6c0.5375,6.7725 -1.45125,14.78125 -2.6875,18.49l-0.86,2.58l2.365,1.505c-0.33594,-0.20156 0.91375,0.38969 0.645,2.58c-0.33594,2.75469 -1.075,4.07156 -1.505,4.6225c-0.43,0.55094 -0.55094,0.44344 -0.43,0.43l-2.9025,0.215l-0.215,2.9025c-0.25531,2.39188 -1.33031,5.29438 -2.4725,7.6325c-0.57781,1.16906 -1.10187,2.20375 -1.6125,2.9025c-0.37625,0.52406 -0.7525,0.91375 -0.7525,0.9675l-1.8275,0.86v2.0425c0,4.15219 -0.12094,7.60563 0.3225,12.47v0.43l0.215,0.43c1.73344,4.6225 5.73781,7.44438 9.9975,9.5675c4.25969,2.12313 9.03,3.655 13.545,5.59c4.515,1.935 8.61344,4.17906 11.61,7.2025c2.24406,2.27094 3.66844,5.29438 4.515,8.9225h-101.48c0.84656,-3.62812 2.2575,-6.65156 4.515,-8.9225c3.01,-3.02344 7.18906,-5.2675 11.7175,-7.2025c4.52844,-1.935 9.27188,-3.46687 13.545,-5.59c4.27313,-2.12312 8.26406,-4.93156 9.9975,-9.5675l0.215,-0.43v-0.43c0.44344,-4.86437 0.3225,-8.31781 0.3225,-12.47v-2.0425l-1.72,-0.9675c0.01344,0.01344 0,0.05375 -0.1075,0c-0.13437,-0.12094 -0.43,-0.41656 -0.7525,-0.86c-0.52406,-0.69875 -1.12875,-1.73344 -1.72,-2.9025c-1.1825,-2.33812 -2.21719,-5.2675 -2.4725,-7.6325l-0.215,-2.9025l-2.9025,-0.215c0.12094,0.01344 0,0.12094 -0.43,-0.43c-0.43,-0.55094 -1.16906,-1.86781 -1.505,-4.6225c-0.26875,-2.19031 0.9675,-2.78156 0.645,-2.58l2.15,-1.3975l-0.645,-2.4725c-2.71437,-10.37375 -3.07719,-19.76656 -0.3225,-26.015c2.74125,-6.22156 8.19688,-10.18562 20.1025,-10.4275zM116.96,79.12c-7.24281,0 -13.76,5.06594 -13.76,12.04c0,6.97406 6.51719,12.04 13.76,12.04c7.24281,0 13.76,-5.06594 13.76,-12.04c0,-6.97406 -6.51719,-12.04 -13.76,-12.04zM116.96,86c4.15219,0 6.88,2.64719 6.88,5.16c0,2.51281 -2.72781,5.16 -6.88,5.16c-4.15219,0 -6.88,-2.64719 -6.88,-5.16c0,-2.51281 2.72781,-5.16 6.88,-5.16zM99.76,103.2c-2.59344,0 -4.95844,0.71219 -6.88,2.15c-1.92156,1.43781 -3.44,3.78938 -3.44,6.45c0,2.66063 1.51844,5.01219 3.44,6.45c1.92156,1.43781 4.28656,2.15 6.88,2.15c2.59344,0 4.95844,-0.71219 6.88,-2.15c1.92156,-1.43781 3.44,-3.78937 3.44,-6.45c0,-2.66062 -1.51844,-5.01219 -3.44,-6.45c-1.92156,-1.43781 -4.28656,-2.15 -6.88,-2.15zM99.76,110.08c1.20938,0 2.21719,0.43 2.795,0.86c0.57781,0.43 0.645,0.67188 0.645,0.86c0,0.18813 -0.06719,0.43 -0.645,0.86c-0.57781,0.43 -1.58562,0.86 -2.795,0.86c-1.20937,0 -2.21719,-0.43 -2.795,-0.86c-0.57781,-0.43 -0.645,-0.67187 -0.645,-0.86c0,-0.18812 0.06719,-0.43 0.645,-0.86c0.57781,-0.43 1.58563,-0.86 2.795,-0.86z"></path></g></g></svg>
+					How to use</a>
+				</li>
+				<li class="active" ><a href="./faq.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M75.68,0c-7.60562,0 -13.76,6.15438 -13.76,13.76v55.04c0,7.60563 6.15438,13.76 13.76,13.76h53.75l26.5525,23.22c1.02125,0.88688 2.44563,1.08844 3.68188,0.5375c1.22281,-0.55094 2.01562,-1.77375 2.01562,-3.1175v-21.285c5.89906,-1.54531 10.32,-6.73219 10.32,-13.115v-55.04c0,-7.60562 -6.15437,-13.76 -13.76,-13.76zM75.68,6.88h82.56c4.09844,0 6.88,2.78156 6.88,6.88v55.04c0,4.09844 -2.78156,6.88 -6.88,6.88c-1.89469,0 -3.44,1.54531 -3.44,3.44v16.555l-21.8225,-19.135c-0.61812,-0.55094 -1.42437,-0.86 -2.2575,-0.86h-55.04c-4.09844,0 -6.88,-2.78156 -6.88,-6.88v-55.04c0,-4.09844 2.78156,-6.88 6.88,-6.88zM113.52,20.9625l-8.6,39.56h6.235l2.0425,-10.32h7.525l2.0425,10.32h6.235l-8.2775,-39.56zM116.96,27.52h0.3225c0.34938,2.75469 0.71219,6.51719 1.3975,8.9225l1.72,8.9225h-6.5575l1.72,-8.9225c0.34938,-2.40531 1.04813,-6.16781 1.3975,-8.9225zM13.76,65.36c-7.60562,0 -13.76,6.15438 -13.76,13.76v55.04c0,6.38281 4.42094,11.56969 10.32,13.115v21.285c0,1.34375 0.79281,2.56656 2.01563,3.1175c1.23625,0.55094 2.66062,0.34938 3.68187,-0.5375l26.5525,-23.22h53.75c7.60563,0 13.76,-6.15437 13.76,-13.76v-48.16h-6.88v48.16c0,4.09844 -2.78156,6.88 -6.88,6.88h-55.04c-0.83312,0 -1.63937,0.30906 -2.2575,0.86l-21.8225,19.135v-16.555c0,-1.89469 -1.54531,-3.44 -3.44,-3.44c-4.09844,0 -6.88,-2.78156 -6.88,-6.88v-55.04c0,-4.09844 2.78156,-6.88 6.88,-6.88h44.72v-6.88zM53.6425,86c-7.91469,0 -12.3625,8.30438 -12.3625,19.995c0,13.41063 4.48813,20.21 11.7175,20.21c0.34938,0 1.03469,0.40313 1.72,0.7525c2.40531,1.37063 6.47688,3.46688 9.5675,4.8375l2.15,-4.8375c-2.40531,-0.68531 -5.22719,-1.76031 -7.6325,-2.795v-0.3225c3.78938,-2.06937 6.235,-7.955 6.235,-18.275c0,-10.66937 -3.14437,-19.565 -11.395,-19.565zM53.32,91.16c3.78938,0 5.16,6.83969 5.16,14.405c0,8.25063 -1.37062,15.1575 -5.16,15.1575c-4.12531,0 -5.4825,-6.90687 -5.4825,-15.1575c0,-7.22937 1.35719,-14.405 5.4825,-14.405z"></path></g></g></svg>
+					FAQ</a>
+				</li>
+				<li class="active" ><a href="./settings.html" >
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					width="24" height="24"
+					viewBox="0 0 172 172"
+					style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M70.63086,10.75l-2.60352,13.85743c-9.99414,2.93945 -18.89648,8.14648 -26.20312,15.11719l-13.31152,-4.66114l-15.36915,26.62304l10.62403,9.11231c-1.21778,4.91308 -2.26758,9.91016 -2.26758,15.20117c0,5.29102 1.0498,10.28808 2.26758,15.20118l-10.62403,9.1123l15.36915,26.62304l13.26953,-4.70312c7.34864,7.05469 16.25098,12.21973 26.24511,15.20118l2.60352,13.81543h30.73828l2.60351,-13.81543c9.99415,-2.98145 18.89649,-8.18848 26.20313,-15.20118l13.26953,4.70313l15.41114,-26.62304l-10.66602,-9.1123c1.21778,-4.91309 2.30957,-9.91016 2.30957,-15.20118c0,-5.29101 -1.0498,-10.28808 -2.26757,-15.20117l10.62402,-9.11231l-15.36915,-26.62304l-13.26953,4.66114c-7.34862,-7.0127 -16.25097,-12.17774 -26.24511,-15.11719l-2.60351,-13.85743zM79.53321,21.5h12.93359l2.0996,11.3379l3.44336,0.83984c10.66601,2.43554 20.07226,8.0205 27.29492,15.74706l2.39355,2.56153l10.91797,-3.82129l6.4668,11.16992l-8.73437,7.5166l1.0498,3.35938c1.51172,4.95508 2.35156,10.28808 2.35156,15.78906c0,5.50098 -0.83984,10.79199 -2.35156,15.78906l-1.0498,3.35938l8.73438,7.5166l-6.4668,11.16992l-10.91797,-3.86328l-2.39355,2.60352c-7.22266,7.72656 -16.62891,13.31152 -27.29492,15.78906l-3.44336,0.75585l-2.0996,11.37989h-12.93359l-2.09961,-11.37989l-3.44335,-0.75585c-10.66602,-2.47754 -20.07227,-8.0625 -27.29493,-15.78906l-2.43554,-2.60352l-10.91797,3.86328l-6.42481,-11.16992l8.73437,-7.5166l-1.0498,-3.35937c-1.51172,-4.95507 -2.35156,-10.28808 -2.35156,-15.78906c0,-5.50098 0.83984,-10.83398 2.35156,-15.78906l1.0498,-3.35937l-8.73437,-7.5166l6.42481,-11.16992l10.95996,3.82129l2.39355,-2.56153c7.22266,-7.72656 16.62891,-13.31152 27.29493,-15.74706l3.44335,-0.83984zM86,53.75c-17.7627,0 -32.25,14.4873 -32.25,32.25c0,17.7627 14.4873,32.25 32.25,32.25c17.7627,0 32.25,-14.4873 32.25,-32.25c0,-17.7627 -14.4873,-32.25 -32.25,-32.25zM86,64.5c11.92578,0 21.5,9.57422 21.5,21.5c0,11.92578 -9.57422,21.5 -21.5,21.5c-11.92578,0 -21.5,-9.57422 -21.5,-21.5c0,-11.92578 9.57422,-21.5 21.5,-21.5z"></path></g></g></svg>
+					Settings</a>
+				</li>
+			</ul>
+		</div>
+    </div> 
+ 
+</body>   
+
+    <script>
+		function openNav() {
+		  var which = document.getElementById("lineButton");
+		  console.log("close: " + which.style.visibility);
+		  which.style.visibility = "hidden";
+		  document.getElementById("mySidenav").style.marginLeft = "0px";
+		  document.getElementById("mySidenav").style.width = "250px";
+		  document.getElementById("main").style.marginLeft = "250px";
+		}
+		
+		function closeNav() {
+			document.getElementById("mySidenav").style.marginLeft = "-3000px";
+            document.getElementById("lineButton").style.width = "25px";
+			var which = document.getElementById("lineButton");
+			which.style.visibility = "visible";			
+			document.getElementById("main").style.marginLeft = "150px";
+		}
+	</script>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="https://www.youtube.com/player_api"> </script>
+<script src="https://unpkg.com/heatmap.js@2.0.5/build/heatmap.js"></script>
+
+<script type="text/javascript">
+
+var duration;
+
+var heatmapInstance;
+var arrayX;
+var arrayY;
+var count = 0;
+var i = 0;
+var inside = "";
+var label;
+var ready = 0;
+var emotionAray = [];
+var modelAray = [];
+var watchID;
+window.onload = function () {
+     watchID = new URLSearchParams(window.location.search).get('w');
+    console.log("wID :" + watchID );
+
+    $.post("/api/getGazeData", {watchID:watchID})
+    .success(function(data, status){
+        arrayX = data.arrayX;
+        arrayY = data.arrayY;
+        // console.log(arrayX) 
+        // console.log(arrayY)
+        
+    });
+
+    $.post("/api/getEmotionData", {watchID:watchID}).success(function(data, status){
+        emotionAray = data.result;
+    });
+
+    $.post("/api/getModelData", {watchID:watchID}).success(function(data, status){
+        modelAray = data.result;
+    });
+
+    $.post("/api/reading", {watchID:watchID})
+    .success(function(data, status){
+        inside =  String.fromCharCode(...data.inside.data);
+        inside =  inside.match(/\d+(?:\.\d+)?/g).map(Number);
+        if(inside.length%2 != 0)
+            inside.splice(inside.length-1);
+        console.log(inside)
+    });
+    document.getElementById("emo").click();
+
+};
+
+function like(){
+    $.post("/api/getDuration", {watchID:watchID})
+        .success(function(data, status){
+            duration = data.duration;
+            console.log( "Second: " + duration );
+            document.getElementById("chart2").style.visibility="visible";
+            document.getElementById("chart2").style.display="unset";
+            document.getElementById("chart").style.visibility="hidden";
+            document.getElementById("chart").style.display="none";
+            drawModel(duration)     
+        });
+}
+
+function emotion(){
+    $.post("/api/getDuration", {watchID:watchID})
+        .success(function(data, status){
+            duration = data.duration;
+            console.log( "Second: " + duration );
+
+            document.getElementById("chart2").style.visibility="hidden";
+            document.getElementById("chart").style.visibility="visible"
+            document.getElementById("chart").style.display="unset";
+            document.getElementById("chart2").style.display="none";
+
+            hande(duration)      
+        });
+}
+
+
+position  = document.getElementById('player').getBoundingClientRect();
+console.log(position)
+
+setTimeout(function onYouTubePlayerAPIReady() {
+    
+    const vid = document.createElement('video');
+    
+    var videoID = new URLSearchParams(window.location.search).get('id');
+    var title = new URLSearchParams(window.location.search).get('title');
+    var hande = new URLSearchParams(window.location.search).get('duration');
+    var watchID = new URLSearchParams(window.location.search).get('w');
+
+	document.getElementById('titleh1').innerHTML = title;
+
+    //Youtube player, kinda like default player
+    window.player = new YT.Player('player', {
+
+        width: window.innerWidth*3/5,
+        height: window.innerHeight*2/4,
+        videoId: videoID,
+        playerVars: { 
+            'autoplay': 0,
+            'controls': 1, 
+            'rel' : 0,
+            'fs' : 0,
+            'cc_load_policy': 0,
+            'color': "white",
+            'disablekb': 1,
+            'iv_load_policy': 3,
+            'modestbranding': 1,
+            'showinfo': 0,
+        },
+        events: {
+            'onStateChange': function (event) {
+                switch (event.data) {
+                    case -1:
+                        console.log('unstarted');
+                        initalize();
+                        break;
+                    case 0:
+                        console.log('ended');
+                        clearInterval(label);
+                        break;
+                    case 1:
+                        console.log('playing');
+                        heatmapInstance.setData({data:[]});
+                        label = setInterval(temp, 200);
+                        break;
+                    case 2:
+                        console.log('paused');
+                        clearInterval(label);
+                        break;
+                    case 3:
+                        console.log('buffering');
+                        clearInterval(label);
+                        break;
+                    case 5:
+                        console.log('video cued');
+                        break;
+                }
+            }
+        }
+    });
+}, 500);
+    
+function initalize() {
+    var heatmapContainer = document.querySelector('.heatmap');
+    heatmapContainer.addEventListener("click", onClck, false);
+
+    heatmapInstance = window.h337.create({
+        container: heatmapContainer,
+        radius: 100,
+        maxOpacity: .9,
+        minOpacity: .3,
+    });
+    console.log("axaxa: " + heatmapContainer.nodeName)
+}
+
+let temp1 = false;
+function onClck(){
+    if(temp1)
+        window.player.playVideo();
+    else
+        window.player.pauseVideo()
+    temp1 = !temp1;
+}
+
+var points = [];
+var pass = false;
+var lostTime = 0;
+function temp() {
+    let currentTime = player.getCurrentTime();
+
+    if(currentTime > inside[count]){
+        var offset = Math.round((currentTime-lostTime)*5);
+        heatmapInstance.addData({
+            x: Math.round((arrayX[offset] * window.innerWidth*3/5) + position.x - window.innerWidth*1/15),
+            y: Math.round((arrayY[offset] * window.innerHeight*1/4) + position.y - window.innerHeight*1/15),
+            value: '1',
+        });
+        if(currentTime > inside[count+1]){
+            lostTime += inside[count+2]-inside[count+1];
+            count+=2;
+        }
+    }
+    
+    points = heatmapInstance.getData().data;
+    console.log(points);
+    for (let index = 0; index < points.length; index++) {
+        points[index].value -= 0.10;
+        points[index].radius -= 10;
+        if(points[index].radius == 0)
+            points.splice(index, 1)
+    }
+    heatmapInstance.setData({data:points});
+}
+
+function hande(duration){
+    console.log("hande");
+    var myPlot = document.getElementById('chart');
+    myPlot.style.width =  window.innerWidth*5/5;
+    myPlot.style.marginTop = "-200px";
+    var x = [];
+    var y1 = [];
+    var y2 = [];
+    var y3 = [];
+    var y4 = [];
+    var y5 = [];
+    var averageHapp = emotionAray[0].happiness;
+    var averageAnger = emotionAray[0].anger;
+    var averageFear = emotionAray[0].fear;
+    var averageSurprize = emotionAray[0].surprize;
+    var averageDisgust = emotionAray[0].disgust;
+    var totalAvrAnger = 0;
+    var totalAvrHapp = 0;
+    var totalAvrFear = 0;
+    var totalAvrSurprize = 0;
+    var totalAvrDisgust = 0;
+    //console.log("Length: " + emotionAray.length);
+    for ( var i = 0; i < emotionAray.length-1; i++ ){
+
+        var ts = new Date (emotionAray[i].timestamp).getSeconds();
+        var ts2 = new Date (emotionAray[i+1].timestamp).getSeconds();
+
+        /*console.log("ts:" + ts);
+        console.log("ts2:" + ts2);*/
+
+        if( ts == ts2 ){
+            averageAnger = (averageAnger +  emotionAray[i+1].anger) / 2;
+            averageHapp = (averageHapp +  emotionAray[i+1].happiness) / 2;
+            averageFear = (averageFear +  emotionAray[i+1].fear) / 2;
+            averageSurprize = (averageSurprize +  emotionAray[i+1].surprize) / 2;
+            averageDisgust = (averageDisgust +  emotionAray[i+1].disgust) / 2;
+        }
+        else{
+            y1[emotionAray[i].ImageSeq] = averageAnger;
+            y2[emotionAray[i].ImageSeq] = averageHapp;
+            y3[emotionAray[i].ImageSeq] = averageFear;
+            y4[emotionAray[i].ImageSeq] = averageSurprize;
+            y5[emotionAray[i].ImageSeq] = averageDisgust;
+            averageAnger = emotionAray[i+1].anger;
+            averageHapp = emotionAray[i+1].happiness;
+            averageFear = emotionAray[i+1].fear;
+            averageSurprize = emotionAray[i+1].surprize;
+            averageDisgust = emotionAray[i+1].disgust;
+            totalAvrAnger = (totalAvrAnger + averageAnger) / 2;
+            totalAvrHapp = (totalAvrHapp + averageHapp) / 2;
+            totalAvrFear = (totalAvrFear + averageFear) / 2;
+            totalAvrSurprize  = (totalAvrSurprize  + averageSurprize ) / 2;
+            totalAvrDisgust = (totalAvrDisgust + averageDisgust) / 2;
+        }
+    }
+
+    y1[emotionAray[emotionAray.length-1].ImageSeq] = averageAnger;
+    y2[emotionAray[emotionAray.length-1].ImageSeq] = averageHapp;
+    y3[emotionAray[emotionAray.length-1].ImageSeq] = averageFear;
+    y4[emotionAray[emotionAray.length-1].ImageSeq] = averageSurprize;
+    y5[emotionAray[emotionAray.length-1].ImageSeq] = averageDisgust;
+
+    var count1 = 0;
+    for (let index = 0; index < duration; index++) {
+        if(index > inside[count1]){
+            x.push(index);
+            if(index > inside[count1+1])
+                count1+=2;
+        }
+    }
+
+    for (var index2 = 0; index2 < emotionAray[emotionAray.length-1].ImageSeq; index2++) {
+        if( y1[index2] == null ){
+            y1[index2] = totalAvrAnger;
+            y2[index2] = totalAvrHapp;
+            y3[index2] = totalAvrFear;
+            y4[index2] = totalAvrSurprize;
+            y5[index2] = totalAvrDisgust;
+        }
+    }
+    
+    var trace1={
+        x: x,
+        y: y1,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#FF5733'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'anger'
+    };
+
+    var trace2={
+        x: x,
+        y: y2,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#FF00FF'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'happiness'
+    };
+
+    var trace3={
+        x: x,
+        y: y3,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#0307fc'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'fear'
+    };
+    var trace4={
+        x: x,
+        y: y4,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#8FBC8F'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'disgust'
+    };
+    var trace5={
+        x: x,
+        y: y5,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#4524a6'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'surprise'
+    };
+
+    data = [trace1, trace2 , trace3 , trace4, trace5];
+    Plotly.newPlot('chart', data, {scrollZoom: true, width: window.innerWidth*3/4, margin:{t:-100,}}, {displayModeBar: false}, {modeBarButtonsToRemove: ['select2d', 'lasso2d', 'toggleSpikelines', 'hoverClosestCartesian', 'hoverCompareCartesian'], displaylogo: false});
+    
+    myPlot.on('plotly_click', function(data){
+        var pn='';
+        for(var i=1; i < data.points.length; i++){
+            pn = data.points[i].x;
+        };
+        lostTime = 0;
+        for (let index = 0; index < inside.length; index+=2) {
+            if(pn<inside[index+1]){
+                count = index;
+                break;
+            }
+            lostTime += inside[index+2]-inside[index+1];
+        }
+        window.player.seekTo(pn);
+    });
+}
+
+function drawModel(duration){
+    console.log("model");
+    var myPlot = document.getElementById('chart2');
+    var x = [];
+    var y1 = [];
+    var y2 = [];
+    var y3 = [];
+    var averageLiked = modelAray[0].liked;
+    var averageNotLiked = modelAray[0].notLiked;
+    var averageNeutral = modelAray[0].neutral;
+    var totalAvrLiked = 0;
+    var totalAvrNotLiked = 0;
+    var totalAvrNeutral = 0;
+    //console.log("Not liked: " + modelAray[0].notLiked);
+    for ( var i = 0; i < modelAray.length-1; i++ ){
+
+        var ts = new Date (modelAray[i].timestamp).getSeconds();
+        var ts2 = new Date (modelAray[i+1].timestamp).getSeconds();
+
+        /*console.log("ts:" + ts);
+        console.log("ts2:" + ts2);*/
+
+        if( ts == ts2 ){
+            averageLiked = (averageLiked +  modelAray[i+1].liked) / 2;
+            averageNotLiked = (averageNotLiked +  modelAray[i+1].notLiked) / 2;
+            averageNeutral = (averageNeutral +  modelAray[i+1].neutral) / 2;
+        }
+        else{
+            y1[modelAray[i].ImageSeq] = averageLiked;
+            y2[modelAray[i].ImageSeq] = averageNotLiked;
+            y3[modelAray[i].ImageSeq] = averageNeutral;
+            averageLiked = modelAray[i+1].liked;
+            averageNotLiked = modelAray[i+1].notLiked;
+            averageNeutral = modelAray[i+1].neutral;
+            totalAvrLiked = (totalAvrLiked + averageLiked) / 2;
+            totalAvrNotLiked = (totalAvrNotLiked + averageNotLiked) / 2;
+            totalAvrNeutral = (totalAvrNeutral + averageNeutral) / 2;
+        }
+    }
+
+    y1[modelAray[modelAray.length-1].ImageSeq] = averageLiked;
+    y2[modelAray[modelAray.length-1].ImageSeq] = averageNotLiked;
+    y3[modelAray[modelAray.length-1].ImageSeq] = averageNeutral;
+
+    var count1 = 0;
+    for (let index = 0; index < duration; index++) {
+        if(index > inside[count1]){
+            x.push(index);
+            if(index > inside[count1+1])
+                count1+=2;
+        }
+    }
+
+    for (var index2 = 0; index2 < modelAray[modelAray.length-1].ImageSeq; index2++) {
+        if( y1[index2] == null ){
+            y1[index2] = totalAvrLiked;
+            y2[index2] = totalAvrNotLiked;
+            y3[index2] = totalAvrNeutral;
+        }
+    }
+    
+    var trace1={
+        x: x,
+        y: y1,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#8FBC8F'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'liked'
+    };
+
+    var trace2={
+        x: x,
+        y: y2,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#FF5733'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'not liked'
+    };
+
+    var trace3={
+        x: x,
+        y: y3,
+        type: 'scatter',
+        mode:'lines+markers', 
+        marker:{size:7, color:'#fcba03'},
+        line: {shape: 'spline', smoothing: 5},
+        name: 'neutral'
+    };
+
+    data = [trace1, trace2 , trace3];
+    Plotly.newPlot('chart2', data, {scrollZoom: true, width: window.innerWidth*3/4},  {modeBarButtonsToRemove: ['select2d', 'lasso2d', 'toggleSpikelines', 'hoverClosestCartesian', 'hoverCompareCartesian'], displaylogo: false});
+
+    myPlot.on('plotly_click', function(data){
+        var pn='';
+        for(var i=1; i < data.points.length; i++){
+            pn = data.points[i].x;
+        };
+        lostTime = 0;
+        for (let index = 0; index < inside.length; index+=2) {
+            if(pn<inside[index+1]){
+                count = index;
+                break;
+            }
+            lostTime += inside[index+2]-inside[index+1];
+        }
+        window.player.seekTo(pn);
+    });
+}
+</script>
