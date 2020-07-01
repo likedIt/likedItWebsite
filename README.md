@@ -6,5 +6,5 @@ Team Members
 Zeynep Ayça Çam
 Elif Beril Şayli
 Hande Arpakuş
-Muhammed Said Demir
 Zeynep Nur Öztürk
+Muhammed Said Demir
